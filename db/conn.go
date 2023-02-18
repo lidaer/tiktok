@@ -8,10 +8,10 @@ import (
 
 var DB *gorm.DB
 
-func Init() {
+func init() {
 	var err error
 	// 连接数据库
-	DB, err = gorm.Open("mysql", "root:root@(127.0.0.1:3306)/douyin?charset=utf8mb4&parseTime=True&loc=Local")
+	DB, err = gorm.Open("mysql", "root:123456@(127.0.0.1:3306)/douyin?charset=utf8mb4&parseTime=True&loc=Local")
 	if err != nil {
 		panic(err)
 	}

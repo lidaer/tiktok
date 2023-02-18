@@ -12,7 +12,7 @@ func InitDouyinRouter() *gin.Engine {
 
 	baseGroup := r.Group("/douyin")
 
-	baseGroup.POST("/user/register/", handler.RegisterHandler)
+	baseGroup.POST("/user/register", handler.RegisterHandler)
 
 	return r
 }

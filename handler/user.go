@@ -37,20 +37,19 @@ func RegisterHandler(c *gin.Context) {
 
 	if _, exist := usersLoginInfo[token]; exist {
 		c.JSON(http.StatusOK, UserLoginResponse{
-			Response: Response{StatusCode: 1, StatusMsg: "User already exist"},
+			Response: Response{StatusCode: 3, StatusMsg: "User already exist"},
 		})
-		return
 	} else {
 		exist := dblayer.UserExist(username)
 		if exist {
 			c.JSON(http.StatusOK, UserLoginResponse{
-				Response: Response{StatusCode: 1, StatusMsg: "UserName already exist"},
+				Response: Response{StatusCode: 4, StatusMsg: "UserName already exist"},
 			})
 		}
 		userId := dblayer.AddUser(username, password)
 		if userId == -100 {
 			c.JSON(http.StatusOK, UserLoginResponse{
-				Response: Response{StatusCode: 1, StatusMsg: "faile to register"},
+				Response: Response{StatusCode: 5, StatusMsg: "faile to register"},
 			})
 		} else {
 			newUser := User{
